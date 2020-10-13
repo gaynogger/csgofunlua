@@ -50,6 +50,8 @@ local csgo_fun_visual_feature5_checkbox = gui.Checkbox(visual_ref, "csgo_fun_lua
 csgo_fun_visual_feature5_checkbox:SetDescription("Enable viewmodel sway modifier")
 local csgo_fun_visual_feature5_slider = gui.Slider(visual_ref, "csgo_fun_lua_visual_feature5_slider", "Weapon Sway Amount", 1.6, 0, 1000, 0.5)
 csgo_fun_visual_feature5_slider:SetDescription("Viewmodel sway scale")
+local csgo_fun_visual_feature6_combobox = gui.Combobox(visual_ref, "csgo_fun_visual_feature6_combobox", "Holiday Mode", "None", "Halloween", "Christmas")
+csgo_fun_visual_feature6_combobox:SetDescription("Changes the holiday mode for the map.")
 
 
 csgo_fun_ragdoll_feature1_checkbox:SetDisabled(true)
@@ -152,6 +154,15 @@ local function csgo_fun_master()
 			else
 			
 					client.SetConVar("cl_wpn_sway_scale", 1.6, true)
+				
+			end
+			
+			if csgo_fun_visual_feature6_combobox:GetValue() then
+			
+					client.SetConVar("sv_holiday_mode", csgo_fun_visual_feature6_combobox:GetValue(), true)
+			else
+			
+					client.SetConVar("sv_holiday_mode", 0, true)
 				
 			end
 	else
